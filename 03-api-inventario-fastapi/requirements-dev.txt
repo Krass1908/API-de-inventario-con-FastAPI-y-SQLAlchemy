@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest>=8.0
+# TestClient de FastAPI: las versiones recientes de Starlette recomiendan httpx2;
+# httpx cubre las versiones anteriores. Con ambos instalados funciona en las dos.
+httpx>=0.27
+httpx2

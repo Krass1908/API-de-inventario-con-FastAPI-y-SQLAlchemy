@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?Define SECRET_KEY en el archivo .env}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en el archivo .env}
+      TOKEN_MINUTOS: ${TOKEN_MINUTOS:-60}
+      DATABASE_URL: sqlite:////app/data/inventario.db
+    volumes:
+      - datos:/app/data   # la base de datos sobrevive a reinicios del contenedor
+    restart: unless-stopped
+
+volumes:
+  datos:
